@@ -4,7 +4,7 @@ We're having a heck ton of fun here at [HACK OHI/O 2018](http://hack.osu.edu/201
 # The Project  
 Write about what we're actually doing at some point in the future.
 
-# The team
+# The Team
 
 ### **Andrew Jivoin**  
 Andrew is a Computer Science and Theoretical Math major at Ohio State. He drew floor plans, wrote README files, and dabbled in network coding.
