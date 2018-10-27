@@ -62,7 +62,7 @@ namespace Business_IoT_Thermostat
             for (int i = 0; i < SAMPLE_COUNT; i++)
             {
                 upCount = 0;
-                pingThing();
+                PingThing();
             }
         }
 
@@ -109,7 +109,7 @@ namespace Business_IoT_Thermostat
         /// <summary>
         /// Runs the ping process
         /// </summary>
-        private static void pingThing()
+        private static void PingThing()
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
