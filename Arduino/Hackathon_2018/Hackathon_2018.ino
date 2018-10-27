@@ -87,19 +87,19 @@ void loop() {
 }
 void sendOutputValue() {
   int chk = DHT11.read(4);
-//  Serial.print(bme.readTemperature() * 9 / 5 + 32);
-//  Serial.print(",");
-//  Serial.print(Fahrenheit(DHT11.temperature) - 3, 2);
-//  Serial.print(",");
-//  Serial.print(bme.readHumidity());
-//  Serial.print(",");
-//  Serial.print(DHT11.humidity);
-//  Serial.print(",");
-//  Serial.print(bme.readPressure());
-//  Serial.print(",");
-//  Serial.print(ultraDistance());
-//  Serial.print(",");
-//  Serial.print("\n");
+  Serial.print(bme.readTemperature() * 9 / 5 + 32);
+  Serial.print(",");
+  Serial.print(Fahrenheit(DHT11.temperature) - 3, 2);
+  Serial.print(",");
+  Serial.print(bme.readHumidity());
+  Serial.print(",");
+  Serial.print(DHT11.humidity);
+  Serial.print(",");
+  Serial.print(bme.readPressure());
+  Serial.print(",");
+  Serial.print(ultraDistance());
+  Serial.print(",");
+  Serial.print("\n");
   delay(80);
 }
 int ultraDistance() {
