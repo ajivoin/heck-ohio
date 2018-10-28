@@ -1,106 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.NetworkInformation;
-using System.Diagnostics;
-using System.Net;
-using System.DirectoryServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net.NetworkInformation;
-using System.Diagnostics;
-using System.Net;
-using System.Threading;
-using System.Net.Sockets;
 
 
 namespace Business_IoT_Thermostat
 {
     public partial class Form1 : Form
     {
-        static CountdownEvent countdown;
-        static int upCount = 0;
-        static object lockObj = new object();
         const bool resolveNames = false;
+
+        const int MAX_IN_RANGE = 10;
+        const int MIN_IN_RANGE = 1;
+
+        const int TRIES_PER_IP = 3;
+        const int PING_TIME = 500;
+        const int SAMPLE_COUNT = 1;
+        const int MIN_RESPONSE_TIME = 2;
+
+        // Jon
+        const string BASE_IP = "192.168.137.";
+
+        // Andrew
+        //const string BASE_IP = "172.31.112.";
+
         public Form1()
         {
             InitializeComponent();
         }
-        
         private void button1_Click(object sender, EventArgs e)
-        {
-           // var localComputers = NetworkComputer.GetLocalNetwork();
+        { 
+            //textBox1.Text = string.Empty;
             //Ping pingSender = new Ping();
-            //for (int i = 0; i < 255; i++)
+            //for (int i = MIN_IN_RANGE; i <= MAX_IN_RANGE; i++)
             //{
-            //    string adr = "192.168.137."+i.ToString();
+            //    string adr = BASE_IP + i.ToString();
             //    IPAddress address = IPAddress.Parse(adr);
             //    Application.DoEvents();
-            //    PingReply reply = pingSender.Send(address);
-            //    if (reply.Status == IPStatus.Success){
-            //        textBox1.Text = adr + textBox1.Text;
-            //        Application.DoEvents();
-            //    }
-            //    else
+            //    List<PingReply> reply = PingN(pingSender, adr, PING_TIME, 1);
+            //    if (reply.Count() > 0)
             //    {
-            //        textBox1.Text = "None";
-            //        Application.DoEvents();
+            //        textBox1.Text = adr + "\r\n" + textBox1.Text;
             //    }
+            //    Application.DoEvents();
+            //}
+            //if (textBox1.Text == string.Empty)
+            //{
+            //    textBox1.Text = "None";
             //}
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            upCount = 0;
-            countdown = new CountdownEvent(1);
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            string ipBase = "192.168.137.";
-            for (int i = 2; i < 255; i++)
+            NetworkScanner netScan = new NetworkScanner(BASE_IP, 2, 3, 4);
+            Dictionary<string, long> addresses = netScan.Scan(PING_TIME, TRIES_PER_IP);
+            foreach (KeyValuePair<string, long> p in addresses)
             {
-                if (i != 35)
-                {
-                    string ip = ipBase + i.ToString();
-
-                    Ping p = new Ping();
-                    p.PingCompleted += new PingCompletedEventHandler(p_PingCompleted);
-                    countdown.AddCount();
-                    p.SendAsync(ip, 500, ip);
-                    Application.DoEvents();
-                }
+                textBox1.Text += string.Format("{0}:{1}", p.Key, p.Value);
             }
-            //countdown.Signal();
-            //countdown.Wait();
-            sw.Stop();
-            TimeSpan span = new TimeSpan(sw.ElapsedTicks);
-            Console.WriteLine("Took {0} milliseconds. {1} hosts active.", sw.ElapsedMilliseconds, upCount);
-            Console.ReadLine();
-        }
-        static void p_PingCompleted(object sender, PingCompletedEventArgs e)
-        {
-            string ip = (string)e.UserState;
-            if (e.Reply != null && e.Reply.Status == IPStatus.Success)
-            {
-                    Console.WriteLine("{0} is up: ({1} ms)", ip, e.Reply.RoundtripTime);
-                lock (lockObj)
-                {
-                    upCount++;
-                }
-            }
-            else if (e.Reply == null)
-            {
-                Console.WriteLine("Pinging {0} failed. (Null Reply object?)", ip);
-            }
-            countdown.Signal();
-        }
+        }  
     }
-    
 }
