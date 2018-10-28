@@ -34,7 +34,7 @@ namespace Business_IoT_Thermostat {
             general = new GeneralView();
             settings = new SettingsView();
 
-            networkScanner = new NetworkScanner(BASE_IP, new int[] { 50, 5, 153, 18 });
+            networkScanner = new NetworkScanner(BASE_IP, new int[] { 68, 69, 137 });
 
             settings.parent = this;
             map.setCallback(this);
@@ -167,10 +167,10 @@ namespace Business_IoT_Thermostat {
         {
             int devices = (await networkScanner.Scan(500, 2)).Count;
             MapView.instance.zoneViews[4].setDevicesText(devices);
-            foreach(ZoneView zv in MapView.instance.zoneViews)
-            {
-                zv.setDevicesText(devices);
-            }
+            //foreach(ZoneView zv in MapView.instance.zoneViews)
+            //{
+            //    zv.setDevicesText(devices);
+           // }
             noConnectionsLeft = devices == 0;
             numDevices = devices;
             if(devices == 0)

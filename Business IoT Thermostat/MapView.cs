@@ -52,7 +52,7 @@ namespace Business_IoT_Thermostat {
             zones[3].Add(zone12);
             zones[4].Add(zone20);
             zones[5].Add(zone21);
-            zones[6].Add(zone22);
+            zones[5].Add(zone22);
 
             floorZones[0] = new int[] { 0 };
             floorZones[1] = new int[] { 1, 2, 3};
@@ -98,7 +98,7 @@ namespace Business_IoT_Thermostat {
         }
 
         private void zone22_Click(object sender, EventArgs e) {
-            OpenZone(6, "Floor 2 - Room E");
+            OpenZone(5, "Floor 2 - Room F");
         }
 
         private void zone21_Click(object sender, EventArgs e) {

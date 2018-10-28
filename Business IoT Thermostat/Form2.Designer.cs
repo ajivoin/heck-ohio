@@ -41,7 +41,7 @@ namespace Business_IoT_Thermostat {
             this.panel1.Controls.Add(this.mapBtn);
             this.panel1.Controls.Add(this.generalBtn);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(150, 526);
             this.panel1.TabIndex = 0;
@@ -57,7 +57,7 @@ namespace Business_IoT_Thermostat {
             this.settingsBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingsBtn.ForeColor = System.Drawing.Color.White;
             this.settingsBtn.Location = new System.Drawing.Point(9, 152);
-            this.settingsBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsBtn.Margin = new System.Windows.Forms.Padding(2);
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.Size = new System.Drawing.Size(114, 38);
             this.settingsBtn.TabIndex = 2;
@@ -76,7 +76,7 @@ namespace Business_IoT_Thermostat {
             this.mapBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mapBtn.ForeColor = System.Drawing.Color.White;
             this.mapBtn.Location = new System.Drawing.Point(9, 109);
-            this.mapBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mapBtn.Margin = new System.Windows.Forms.Padding(2);
             this.mapBtn.Name = "mapBtn";
             this.mapBtn.Size = new System.Drawing.Size(114, 38);
             this.mapBtn.TabIndex = 1;
@@ -95,7 +95,7 @@ namespace Business_IoT_Thermostat {
             this.generalBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.generalBtn.ForeColor = System.Drawing.Color.White;
             this.generalBtn.Location = new System.Drawing.Point(9, 66);
-            this.generalBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.generalBtn.Margin = new System.Windows.Forms.Padding(2);
             this.generalBtn.Name = "generalBtn";
             this.generalBtn.Size = new System.Drawing.Size(114, 38);
             this.generalBtn.TabIndex = 0;
@@ -108,7 +108,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.userControl.BackColor = System.Drawing.SystemColors.ControlLight;
             this.userControl.Location = new System.Drawing.Point(149, 0);
-            this.userControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.userControl.Margin = new System.Windows.Forms.Padding(2);
             this.userControl.Name = "userControl";
             this.userControl.Size = new System.Drawing.Size(955, 528);
             this.userControl.TabIndex = 1;
@@ -132,7 +132,7 @@ namespace Business_IoT_Thermostat {
             this.ClientSize = new System.Drawing.Size(984, 522);
             this.Controls.Add(this.userControl);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form2";
             this.Text = "HACK OH/IO demo";
             this.Load += new System.EventHandler(this.Form2_Load);
