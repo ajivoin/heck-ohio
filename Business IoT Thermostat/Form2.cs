@@ -167,10 +167,10 @@ namespace Business_IoT_Thermostat {
         {
             int devices = (await networkScanner.Scan(500, 2)).Count;
             MapView.instance.zoneViews[4].setDevicesText(devices);
-            foreach(ZoneView zv in MapView.instance.zoneViews)
-            {
-                zv.setDevicesText(devices);
-            }
+            //foreach(ZoneView zv in MapView.instance.zoneViews)
+            //{
+            //    zv.setDevicesText(devices);
+           // }
             noConnectionsLeft = devices == 0;
             numDevices = devices;
             if(devices == 0)
