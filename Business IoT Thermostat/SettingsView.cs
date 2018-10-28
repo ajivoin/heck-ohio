@@ -27,7 +27,11 @@ namespace Business_IoT_Thermostat {
         float previousDist;
         float currentDist;
 
-
+        public SerialPort Port {
+            get {
+                return port;
+            }
+        }
 
 
         public SettingsView() {
@@ -92,6 +96,11 @@ namespace Business_IoT_Thermostat {
             float humid1 = float.Parse(vals[2]);
             float humid2 = float.Parse(vals[3]);
 
+            Form2.instance.lowerTempLeft = (temp1 < MapView.instance.zoneViews[4].setTemp - 1.5f);
+            Form2.instance.lowerTempRight = (temp2 < MapView.instance.zoneViews[5].setTemp - 1.5f);
+
+            Form2.instance.higherTempLeft = (temp1 > MapView.instance.zoneViews[4].setTemp + 1.5f);
+            Form2.instance.higherTempRight = (temp2 > MapView.instance.zoneViews[5].setTemp + 1.5f);
 
             MapView.instance.zoneViews[4].SetTemp(temp1.ToString() + "\u00B0");
             MapView.instance.zoneViews[5].SetTemp(temp2.ToString() + "\u00B0");
@@ -99,7 +108,9 @@ namespace Business_IoT_Thermostat {
             MapView.instance.zoneViews[4].SetHumid(humid1.ToString() + "%");
             MapView.instance.zoneViews[5].SetHumid(humid2.ToString() + "%");
 
-            currentDist = float.Parse(vals[5]);
+            Form2.instance.noMotionRight = 0 == float.Parse(vals[5]);
+            bool test = Form2.instance.noMotionRight;
+            //Console.Write(test);
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -108,14 +119,18 @@ namespace Business_IoT_Thermostat {
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
-            if (Math.Abs(currentDist - previousDist) > 2f) {
-                setTrigger();
-            }
-            previousDist = currentDist;
+            //Form2.instance.noMotionRight = true;
+            //if (Math.Abs(currentDist - previousDist) >= 1f) {
+            //    Form2.instance.noMotionRight = false;
+            //}
+            //previousDist = currentDist;
         }
 
-        public void setTrigger() {
-            currentMode = '1';
+        public void WriteToPort(char write)
+        {
+            if (port != null)
+                port.Write(write.ToString());
         }
+
     }
 }
