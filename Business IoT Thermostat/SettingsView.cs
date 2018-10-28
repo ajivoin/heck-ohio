@@ -102,8 +102,8 @@ namespace Business_IoT_Thermostat {
             Form2.instance.higherTempLeft = (temp1 > MapView.instance.zoneViews[4].setTemp + 1.5f);
             Form2.instance.higherTempRight = (temp2 > MapView.instance.zoneViews[5].setTemp + 1.5f);
 
-            MapView.instance.zoneViews[4].SetTemp(temp1.ToString() + "\u00B0");
-            MapView.instance.zoneViews[5].SetTemp(temp2.ToString() + "\u00B0");
+            MapView.instance.zoneViews[4].SetTemp(temp1.ToString() + "\u00B0", temp1);
+            MapView.instance.zoneViews[5].SetTemp(temp2.ToString() + "\u00B0", temp2);
 
             MapView.instance.zoneViews[4].SetHumid(humid1.ToString() + "%");
             MapView.instance.zoneViews[5].SetHumid(humid2.ToString() + "%");

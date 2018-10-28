@@ -32,30 +32,33 @@ namespace Business_IoT_Thermostat {
             // 
             // cboxPorts
             // 
+            this.cboxPorts.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxPorts.FormattingEnabled = true;
-            this.cboxPorts.Location = new System.Drawing.Point(50, 20);
+            this.cboxPorts.Location = new System.Drawing.Point(110, 70);
             this.cboxPorts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboxPorts.Name = "cboxPorts";
-            this.cboxPorts.Size = new System.Drawing.Size(92, 21);
+            this.cboxPorts.Size = new System.Drawing.Size(191, 33);
             this.cboxPorts.TabIndex = 0;
             this.cboxPorts.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 22);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(51, 73);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.Size = new System.Drawing.Size(55, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "port:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(50, 44);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(317, 69);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 29);
+            this.button1.Size = new System.Drawing.Size(128, 33);
             this.button1.TabIndex = 2;
             this.button1.Text = "Connect";
             this.button1.UseVisualStyleBackColor = true;
