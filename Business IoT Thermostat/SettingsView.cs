@@ -22,12 +22,14 @@ namespace Business_IoT_Thermostat {
         SerialPort port;
         String portInput;
 
+        float previousDist;
+        float currentDist;
+
 
 
 
         public SettingsView() {
             InitializeComponent();
-
             getAvailableComPorts();
 
             foreach (string port in ports) {
@@ -65,6 +67,7 @@ namespace Business_IoT_Thermostat {
         public void startDataStream() {
             while (isConnected) {
                 portInput = port.ReadLine();
+                ProcessLine(portInput);
                 Console.WriteLine(portInput);
                 Thread.Sleep(20);
                 Application.DoEvents();
@@ -80,9 +83,33 @@ namespace Business_IoT_Thermostat {
 
         }
 
+        void ProcessLine (String line) {
+            String[] vals = line.Split(',');
+            float temp1 = float.Parse(vals[0]);
+            float temp2 = float.Parse(vals[1]);
+            float humid1 = float.Parse(vals[2]);
+            float humid2 = float.Parse(vals[3]);
+
+
+            MapView.instance.zoneViews[4].SetTemp(temp1.ToString() + "\u00B0");
+            MapView.instance.zoneViews[5].SetTemp(temp2.ToString() + "\u00B0");
+
+            MapView.instance.zoneViews[4].SetHumid(humid1.ToString() + "%");
+            MapView.instance.zoneViews[5].SetHumid(humid2.ToString() + "%");
+
+            currentDist = float.Parse(vals[5]);
+        }
+
         private void button1_Click(object sender, EventArgs e) {
             connectToArduino();
             startDataStream();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e) {
+            if (Math.Abs(currentDist - previousDist) > 2f) {
+                // Send data back
+            }
+            previousDist = currentDist;
         }
     }
 }

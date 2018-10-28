@@ -100,7 +100,7 @@ namespace Business_IoT_Thermostat {
             // userControl
             // 
             this.userControl.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.userControl.Location = new System.Drawing.Point(198, 0);
+            this.userControl.Location = new System.Drawing.Point(199, 0);
             this.userControl.Name = "userControl";
             this.userControl.Size = new System.Drawing.Size(1273, 650);
             this.userControl.TabIndex = 1;

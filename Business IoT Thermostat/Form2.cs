@@ -29,8 +29,6 @@ namespace Business_IoT_Thermostat {
             map.setCallback(this);
             userControl.Controls.Add(general);
 
-            //settings.startDataStream();
-
         }
 
         //private void ChangeActiveView() {

@@ -11,18 +11,22 @@ using System.Windows.Forms;
 namespace Business_IoT_Thermostat {
     public partial class MapView : UserControl {
 
+        public static MapView instance;
         public List<PictureBox> floorImages = new List<PictureBox>();
         public List<List<PictureBox>> zones = new List<List<PictureBox>>();
         public int[][] floorZones = new int[3][];
         public Color selected = Color.FromArgb(33, 150, 243);
         public Color unselected = Color.FromArgb(187, 222, 251);
+        public List<ZoneView> zoneViews = new List<ZoneView>();
 
         public Form2 callback;
         
         public MapView() {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             InitializeComponent();
-            
+
+            if (instance == null)
+                instance = this;
 
             floorImages.Add(floor0);
             floorImages.Add(floor1);
@@ -36,6 +40,10 @@ namespace Business_IoT_Thermostat {
             zones.Add(new List<PictureBox>());
             zones.Add(new List<PictureBox>());
             zones.Add(new List<PictureBox>());
+
+            for (int i = 0; i < 7; i++) {
+                zoneViews.Add(new ZoneView());
+            }
 
             zones[0].Add(zone00);
             zones[0].Add(zone01);
@@ -111,9 +119,8 @@ namespace Business_IoT_Thermostat {
 
         public void OpenZone(int i , string name) {
             userControl.Controls.Clear();
-            ZoneView zone = new ZoneView();
-            userControl.Controls.Add(zone);
-            zone.SetText(name);
+            userControl.Controls.Add(zoneViews[i]);
+            zoneViews[i].SetText(name);
 
             foreach (List<PictureBox> l in zones) {
                 foreach (PictureBox p in l) {
