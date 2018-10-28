@@ -23,6 +23,10 @@ namespace Business_IoT_Thermostat {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.labelText = new System.Windows.Forms.Label();
             this.tempText = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -34,6 +38,9 @@ namespace Business_IoT_Thermostat {
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.devicesLabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.graph2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.graph2)).BeginInit();
             this.SuspendLayout();
             // 
             // labelText
@@ -42,7 +49,7 @@ namespace Business_IoT_Thermostat {
             this.labelText.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelText.Location = new System.Drawing.Point(47, 57);
             this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(58, 25);
+            this.labelText.Size = new System.Drawing.Size(73, 32);
             this.labelText.TabIndex = 1;
             this.labelText.Text = "Zone";
             // 
@@ -64,7 +71,7 @@ namespace Business_IoT_Thermostat {
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(59, 228);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 25);
+            this.label1.Size = new System.Drawing.Size(166, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "Current Temp.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -76,7 +83,7 @@ namespace Business_IoT_Thermostat {
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(327, 322);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
+            this.label2.Size = new System.Drawing.Size(88, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "Humidity";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -143,7 +150,7 @@ namespace Business_IoT_Thermostat {
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(315, 228);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 25);
+            this.label3.Size = new System.Drawing.Size(120, 32);
             this.label3.TabIndex = 9;
             this.label3.Text = "Set Temp.";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -154,7 +161,7 @@ namespace Business_IoT_Thermostat {
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(60, 320);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 20);
+            this.label4.Size = new System.Drawing.Size(145, 25);
             this.label4.TabIndex = 10;
             this.label4.Text = "Devices In Zone";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,13 +174,65 @@ namespace Business_IoT_Thermostat {
             this.devicesLabel.Name = "devicesLabel";
             this.devicesLabel.Size = new System.Drawing.Size(185, 49);
             this.devicesLabel.TabIndex = 11;
-            this.devicesLabel.Text = "1";
+            this.devicesLabel.Text = "0";
             this.devicesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // graph2
+            // 
+            this.graph2.BorderlineWidth = 0;
+            chartArea1.AlignmentOrientation = System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.None;
+            chartArea1.AxisX.IsMarginVisible = false;
+            chartArea1.AxisX.IsStartedFromZero = false;
+            chartArea1.AxisX.LabelStyle.Interval = 0D;
+            chartArea1.AxisX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            chartArea1.AxisX.MajorGrid.Interval = 0D;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            chartArea1.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.IsStartedFromZero = false;
+            chartArea1.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            chartArea1.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            chartArea1.BorderColor = System.Drawing.Color.Maroon;
+            chartArea1.BorderWidth = 0;
+            chartArea1.Name = "ChartArea1";
+            this.graph2.ChartAreas.Add(chartArea1);
+            legend1.Alignment = System.Drawing.StringAlignment.Center;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
+            legend1.MaximumAutoSize = 20F;
+            legend1.Name = "Legend1";
+            legend1.TitleAlignment = System.Drawing.StringAlignment.Near;
+            legend1.TitleFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.graph2.Legends.Add(legend1);
+            this.graph2.Location = new System.Drawing.Point(15, 371);
+            this.graph2.Margin = new System.Windows.Forms.Padding(4);
+            this.graph2.Name = "graph2";
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.Color.LightSkyBlue;
+            series1.Legend = "Legend1";
+            series1.Name = "Temperature (°F)";
+            series1.YValuesPerPoint = 32;
+            this.graph2.Series.Add(series1);
+            this.graph2.Size = new System.Drawing.Size(454, 326);
+            this.graph2.TabIndex = 21;
+            this.graph2.Text = "chart2";
+            this.graph2.Click += new System.EventHandler(this.graph2_Click);
             // 
             // ZoneView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.graph2);
             this.Controls.Add(this.devicesLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -189,6 +248,7 @@ namespace Business_IoT_Thermostat {
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ZoneView";
             this.Size = new System.Drawing.Size(484, 838);
+            ((System.ComponentModel.ISupportInitialize)(this.graph2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,5 +266,7 @@ namespace Business_IoT_Thermostat {
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label devicesLabel;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart graph2;
     }
 }

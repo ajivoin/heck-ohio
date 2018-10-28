@@ -55,7 +55,17 @@ namespace Business_IoT_Thermostat {
             tempSet.Text = setTemp.ToString() + "\u00B0";
         }
 
+        public void setDevicesText(int size)
+        {
+            devicesLabel.Text = size.ToString();
+        }
+
         private void tempSet_Click(object sender, EventArgs e) {
+
+        }
+
+        private void graph2_Click(object sender, EventArgs e)
+        {
 
         }
     }
