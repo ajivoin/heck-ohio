@@ -29,7 +29,7 @@ namespace Business_IoT_Thermostat {
             general = new GeneralView();
             settings = new SettingsView();
 
-            networkScanner = new NetworkScanner(BASE_IP, 3, 4, 5, 6);
+            networkScanner = new NetworkScanner(BASE_IP, 3, 4);
 
             settings.parent = this;
             map.setCallback(this);
