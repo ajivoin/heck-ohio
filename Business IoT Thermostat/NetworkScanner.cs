@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business_IoT_Thermostat
 {
     class NetworkScanner
     { 
-        readonly int upCount, minInRange, maxInRange;
+        readonly int minInRange, maxInRange;
         int scanCount;
 
         readonly List<string> ipList;
@@ -19,12 +16,12 @@ namespace Business_IoT_Thermostat
         // Filters out connections to self
         const int MIN_RESPONSE_TIME = 2;
 
-        // Jon
-        const string BASE_IP = "192.168.137.";
-
-        // Andrew
-        //const string BASE_IP = "172.31.112.";
-
+        /// <summary>
+        /// Creates a Network Scanner
+        /// </summary>
+        /// <param name="baseIP">Base string of IP address to build upon. Example: "255.255.255."</param>
+        /// <param name="minInRange">Minimum value for 4th segment of IP address</param>
+        /// <param name="maxInRange">Maximum value for 4th segment of IP address</param>
         public NetworkScanner(string baseIP, int minInRange, int maxInRange)
         {
             ipList = GenerateIPList(baseIP, minInRange, maxInRange);
@@ -32,43 +29,22 @@ namespace Business_IoT_Thermostat
             this.maxInRange = maxInRange;
         }
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    textBox1.Text = string.Empty;
-        //    Ping pingSender = new Ping();
-        //    for (int i = MIN_IN_RANGE; i <= MAX_IN_RANGE; i++)
-        //    {
-        //        string adr = BASE_IP + i.ToString();
-        //        IPAddress address = IPAddress.Parse(adr);
-        //        Application.DoEvents();
-        //        List<PingReply> reply = PingN(pingSender, adr, PING_TIME, 1);
-        //        if (reply.Count() > 0)
-        //        {
-        //            textBox1.Text = adr + "\r\n" + textBox1.Text;
-        //        }
-        //        Application.DoEvents();
-        //    }
-        //    if (textBox1.Text == string.Empty)
-        //    {
-        //        textBox1.Text = "None";
-        //    }
-        //}
-
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    for (int i = 0; i < SAMPLE_COUNT; i++)
-        //    {
-        //        upCount = 0;
-        //        PingThing();
-        //    }
-        //}
+        /// <summary>
+        /// Creates a Network Scanner
+        /// </summary>
+        /// <param name="baseIP">Base string of IP address to build upon. Example: "255.255.255."</param>
+        /// <param name="parts">Values for the 4th segment of IP address. Each value x must fit: 0 <= x <= 255</param>
+        public NetworkScanner(string baseIP, params int[] parts)
+        {
+            ipList = parts.Distinct().Select(i => baseIP + i.ToString()).ToList();
+        }
 
         /// <summary>
         /// Generates a list of IP addresses prefixed with `baseIP` from "`baseIP`.`min`" through "`baseIP`.`max`"
         /// </summary>
         /// <param name="baseIP">First three segments of the network address with a '.' at the end</param>
-        /// <param name="min">Minimum number for range</param>
-        /// <param name="max">Maximum number for range</param>
+        /// <param name="min">Minimum number for range. Must fit: 0 <= `min` <= max</param>
+        /// <param name="max">Maximum number for range. Must fit: min <= max <= 255</param>
         /// <returns>List of IP addresses</returns>
         private List<string> GenerateIPList(string baseIP, int min, int max)
         {
@@ -81,10 +57,10 @@ namespace Business_IoT_Thermostat
         /// <summary>
         /// Pings a specified IP n times and returns list of successful ping replies.
         /// </summary>
+        /// <param name="n">Number of attempts</param>
         /// <param name="pingSender">Ping sender object</param>
         /// <param name="ip">IP to be pinged</param>
         /// <param name="timeout">Ping timeout</param>
-        /// <param name="n">Number of attempts</param>
         /// <returns>List of successful ping replies</returns>
         public List<PingReply> PingN(int n, Ping pingSender, string ip, int timeout)
         {
@@ -111,8 +87,11 @@ namespace Business_IoT_Thermostat
         }
 
         /// <summary>
-        /// Runs the ping process
+        /// Scans network, returns dictionary of IP addresses and their response times
         /// </summary>
+        /// <param name="timeout">Ping timeout</param>
+        /// <param name="attemptsPerIP">Max pings per IP address</param>
+        /// <returns>Dictionary of IP addresses and their response times</returns>
         public Dictionary<string, long> Scan(int timeout, int attemptsPerIP)
         {
             Dictionary<string, long> foundIPs = new Dictionary<string, long>();
@@ -125,6 +104,7 @@ namespace Business_IoT_Thermostat
 
             foreach (var ip in ipList)
             {
+                Console.WriteLine(ip);
                 scanCount++;
                 List<PingReply> replies = PingN(attemptsPerIP, pingSender, ip, timeout);
                 if (replies.Count() > 0)
