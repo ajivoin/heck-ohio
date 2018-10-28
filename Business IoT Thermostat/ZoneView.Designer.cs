@@ -31,6 +31,9 @@ namespace Business_IoT_Thermostat {
             this.tempSet = new System.Windows.Forms.Label();
             this.btnRaiseSet = new System.Windows.Forms.Button();
             this.btnLowerSet = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelText
@@ -47,7 +50,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.tempText.Font = new System.Drawing.Font("Roboto", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tempText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(118)))), ((int)(((byte)(210)))));
-            this.tempText.Location = new System.Drawing.Point(27, 131);
+            this.tempText.Location = new System.Drawing.Point(20, 141);
             this.tempText.Name = "tempText";
             this.tempText.Size = new System.Drawing.Size(285, 97);
             this.tempText.TabIndex = 2;
@@ -59,11 +62,11 @@ namespace Business_IoT_Thermostat {
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(85, 219);
+            this.label1.Location = new System.Drawing.Point(59, 228);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 32);
+            this.label1.Size = new System.Drawing.Size(166, 32);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Temperature ";
+            this.label1.Text = "Current Temp.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -71,7 +74,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(332, 218);
+            this.label2.Location = new System.Drawing.Point(327, 322);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 25);
             this.label2.TabIndex = 4;
@@ -83,7 +86,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.humidText.Font = new System.Drawing.Font("Roboto", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.humidText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(118)))), ((int)(((byte)(210)))));
-            this.humidText.Location = new System.Drawing.Point(288, 169);
+            this.humidText.Location = new System.Drawing.Point(284, 271);
             this.humidText.Name = "humidText";
             this.humidText.Size = new System.Drawing.Size(185, 49);
             this.humidText.TabIndex = 5;
@@ -94,9 +97,9 @@ namespace Business_IoT_Thermostat {
             // 
             this.tempSet.Font = new System.Drawing.Font("Roboto", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tempSet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(118)))), ((int)(((byte)(210)))));
-            this.tempSet.Location = new System.Drawing.Point(104, 251);
+            this.tempSet.Location = new System.Drawing.Point(311, 141);
             this.tempSet.Name = "tempSet";
-            this.tempSet.Size = new System.Drawing.Size(124, 87);
+            this.tempSet.Size = new System.Drawing.Size(151, 87);
             this.tempSet.TabIndex = 6;
             this.tempSet.Text = "70�";
             this.tempSet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,7 +112,7 @@ namespace Business_IoT_Thermostat {
             this.btnRaiseSet.FlatAppearance.BorderSize = 0;
             this.btnRaiseSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRaiseSet.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRaiseSet.Location = new System.Drawing.Point(207, 270);
+            this.btnRaiseSet.Location = new System.Drawing.Point(430, 159);
             this.btnRaiseSet.Name = "btnRaiseSet";
             this.btnRaiseSet.Size = new System.Drawing.Size(35, 49);
             this.btnRaiseSet.TabIndex = 7;
@@ -125,7 +128,7 @@ namespace Business_IoT_Thermostat {
             this.btnLowerSet.FlatAppearance.BorderSize = 0;
             this.btnLowerSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLowerSet.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLowerSet.Location = new System.Drawing.Point(76, 270);
+            this.btnLowerSet.Location = new System.Drawing.Point(293, 158);
             this.btnLowerSet.Name = "btnLowerSet";
             this.btnLowerSet.Size = new System.Drawing.Size(44, 49);
             this.btnLowerSet.TabIndex = 8;
@@ -134,10 +137,46 @@ namespace Business_IoT_Thermostat {
             this.btnLowerSet.UseVisualStyleBackColor = false;
             this.btnLowerSet.Click += new System.EventHandler(this.btnLowerSet_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(315, 228);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 32);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Set Temp.";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(60, 320);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(145, 25);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Devices In Zone";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Roboto", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(118)))), ((int)(((byte)(210)))));
+            this.label5.Location = new System.Drawing.Point(40, 271);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(185, 49);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "1";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ZoneView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnLowerSet);
             this.Controls.Add(this.btnRaiseSet);
             this.Controls.Add(this.tempSet);
@@ -149,7 +188,7 @@ namespace Business_IoT_Thermostat {
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ZoneView";
-            this.Size = new System.Drawing.Size(1084, 838);
+            this.Size = new System.Drawing.Size(484, 838);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +203,8 @@ namespace Business_IoT_Thermostat {
         private System.Windows.Forms.Label tempSet;
         private System.Windows.Forms.Button btnRaiseSet;
         private System.Windows.Forms.Button btnLowerSet;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
