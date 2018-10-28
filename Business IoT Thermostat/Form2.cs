@@ -29,7 +29,7 @@ namespace Business_IoT_Thermostat {
             general = new GeneralView();
             settings = new SettingsView();
 
-            networkScanner = new NetworkScanner(BASE_IP, new int[] { 1 });
+            networkScanner = new NetworkScanner(BASE_IP, new int[] { 50, 5, 153, 18 });
 
             settings.parent = this;
             map.setCallback(this);
@@ -102,8 +102,8 @@ namespace Business_IoT_Thermostat {
 
         private async void timer1_Tick(object sender, EventArgs e)
         {
-            int devices = (await Task.WhenAll(networkScanner.Scan(300, 2))).Count();
-            MapView.instance.zoneViews[5].setDevicesText(devices);
+            int devices = (await networkScanner.Scan(500, 2)).Count;
+            MapView.instance.zoneViews[4].setDevicesText(devices);
         }
     }
 }
