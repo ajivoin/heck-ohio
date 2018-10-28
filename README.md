@@ -6,14 +6,14 @@ Write about what we're actually doing at some point in the future.
 
 # The Team
 
-### **Andrew Jivoin**  
-Andrew is a Computer Science and Theoretical Math major at Ohio State. He drew floor plans, wrote README files, and dabbled in network coding.
+### **Andrew Jivoin**  [@ajivoin](https://github.com/ajivoin)
+Andrew is a Computer Science and Theoretical Math student at Ohio State. He drew floor plans, wrote README files, and dabbled in network coding.
 
-### **Michael Kaltman**  
-Placeholder text. Please fill this out or you'll forever look silly for being a placeholder.
+### **Michael Kaltman**  [@michaelskaltman](https://github.com/michaelskaltman)
+Michael is a Biomedical Engineering student at the Ohio State University.
 
-### **Alexander Shearer**  
-Placeholder text. Please fill this out or you'll forever look silly for being a placeholder.
+### **Alexander Shearer**  [@ShearerAWS](https://github.com/ShearerAWS)
+Alex is a second year undergraduate at The Ohio State University, double majoring in Computer Science and Data Analytics. In his free time, he likes to create games. 
 
-### **Jon Zimmerman**  
-Placeholder text. Please fill this out or you'll forever look silly for being a placeholder.
+### **Jon Zimmerman**  [@Jon-Zimmerman](https://github.com/Jon-Zimmerman)
+Jon Zimmerman is a Mechanical Engineering student at Ohio State. Fun fact: He is a hardware hacking professional and hates being written about in README files.
