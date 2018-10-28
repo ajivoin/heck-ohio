@@ -17,3 +17,6 @@ Alex is a second year undergraduate at The Ohio State University, double majorin
 
 ### **Jon Zimmerman**  [@Jon-Zimmerman](https://github.com/Jon-Zimmerman)
 Jon Zimmerman is a Mechanical Engineering student at Ohio State. Fun fact: He is a hardware hacking professional and hates being written about in README files.
+
+
+*This branch contains the code in its state before presenting at HACK OHI/O 2018.*
