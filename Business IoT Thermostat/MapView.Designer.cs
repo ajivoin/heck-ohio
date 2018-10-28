@@ -73,7 +73,7 @@ namespace Business_IoT_Thermostat {
             "Floor 1",
             "Floor 2"});
             this.cboxFloor.Location = new System.Drawing.Point(226, 58);
-            this.cboxFloor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboxFloor.Margin = new System.Windows.Forms.Padding(2);
             this.cboxFloor.Name = "cboxFloor";
             this.cboxFloor.Size = new System.Drawing.Size(112, 27);
             this.cboxFloor.TabIndex = 2;
@@ -85,7 +85,7 @@ namespace Business_IoT_Thermostat {
             this.floor1.Image = ((System.Drawing.Image)(resources.GetObject("floor1.Image")));
             this.floor1.InitialImage = ((System.Drawing.Image)(resources.GetObject("floor1.InitialImage")));
             this.floor1.Location = new System.Drawing.Point(26, 85);
-            this.floor1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.floor1.Margin = new System.Windows.Forms.Padding(2);
             this.floor1.Name = "floor1";
             this.floor1.Size = new System.Drawing.Size(355, 321);
             this.floor1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -98,7 +98,7 @@ namespace Business_IoT_Thermostat {
             this.floor0.Image = ((System.Drawing.Image)(resources.GetObject("floor0.Image")));
             this.floor0.InitialImage = ((System.Drawing.Image)(resources.GetObject("floor0.InitialImage")));
             this.floor0.Location = new System.Drawing.Point(26, 85);
-            this.floor0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.floor0.Margin = new System.Windows.Forms.Padding(2);
             this.floor0.Name = "floor0";
             this.floor0.Size = new System.Drawing.Size(355, 321);
             this.floor0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -111,7 +111,7 @@ namespace Business_IoT_Thermostat {
             this.floor2.Image = ((System.Drawing.Image)(resources.GetObject("floor2.Image")));
             this.floor2.InitialImage = ((System.Drawing.Image)(resources.GetObject("floor2.InitialImage")));
             this.floor2.Location = new System.Drawing.Point(26, 85);
-            this.floor2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.floor2.Margin = new System.Windows.Forms.Padding(2);
             this.floor2.Name = "floor2";
             this.floor2.Size = new System.Drawing.Size(355, 321);
             this.floor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -122,7 +122,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.zone01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.zone01.Location = new System.Drawing.Point(82, 126);
-            this.zone01.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zone01.Margin = new System.Windows.Forms.Padding(2);
             this.zone01.Name = "zone01";
             this.zone01.Size = new System.Drawing.Size(245, 146);
             this.zone01.TabIndex = 6;
@@ -133,7 +133,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.zone00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.zone00.Location = new System.Drawing.Point(146, 126);
-            this.zone00.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zone00.Margin = new System.Windows.Forms.Padding(2);
             this.zone00.Name = "zone00";
             this.zone00.Size = new System.Drawing.Size(182, 245);
             this.zone00.TabIndex = 7;
@@ -144,7 +144,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.zone10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.zone10.Location = new System.Drawing.Point(82, 126);
-            this.zone10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zone10.Margin = new System.Windows.Forms.Padding(2);
             this.zone10.Name = "zone10";
             this.zone10.Size = new System.Drawing.Size(245, 146);
             this.zone10.TabIndex = 8;
@@ -155,7 +155,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.zone11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.zone11.Location = new System.Drawing.Point(146, 284);
-            this.zone11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zone11.Margin = new System.Windows.Forms.Padding(2);
             this.zone11.Name = "zone11";
             this.zone11.Size = new System.Drawing.Size(95, 88);
             this.zone11.TabIndex = 9;
@@ -166,7 +166,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.zone12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.zone12.Location = new System.Drawing.Point(253, 284);
-            this.zone12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zone12.Margin = new System.Windows.Forms.Padding(2);
             this.zone12.Name = "zone12";
             this.zone12.Size = new System.Drawing.Size(74, 88);
             this.zone12.TabIndex = 10;
@@ -177,7 +177,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.zone21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.zone21.Location = new System.Drawing.Point(253, 126);
-            this.zone21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zone21.Margin = new System.Windows.Forms.Padding(2);
             this.zone21.Name = "zone21";
             this.zone21.Size = new System.Drawing.Size(74, 245);
             this.zone21.TabIndex = 11;
@@ -188,7 +188,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.zone20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.zone20.Location = new System.Drawing.Point(82, 126);
-            this.zone20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zone20.Margin = new System.Windows.Forms.Padding(2);
             this.zone20.Name = "zone20";
             this.zone20.Size = new System.Drawing.Size(159, 146);
             this.zone20.TabIndex = 12;
@@ -199,7 +199,7 @@ namespace Business_IoT_Thermostat {
             // 
             this.zone22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.zone22.Location = new System.Drawing.Point(146, 284);
-            this.zone22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zone22.Margin = new System.Windows.Forms.Padding(2);
             this.zone22.Name = "zone22";
             this.zone22.Size = new System.Drawing.Size(181, 88);
             this.zone22.TabIndex = 13;
@@ -209,7 +209,7 @@ namespace Business_IoT_Thermostat {
             // userControl
             // 
             this.userControl.Location = new System.Drawing.Point(351, 2);
-            this.userControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.userControl.Margin = new System.Windows.Forms.Padding(2);
             this.userControl.Name = "userControl";
             this.userControl.Size = new System.Drawing.Size(417, 483);
             this.userControl.TabIndex = 14;
@@ -219,7 +219,6 @@ namespace Business_IoT_Thermostat {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Controls.Add(this.userControl);
             this.Controls.Add(this.cboxFloor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.zone21);
@@ -227,13 +226,14 @@ namespace Business_IoT_Thermostat {
             this.Controls.Add(this.zone22);
             this.Controls.Add(this.zone11);
             this.Controls.Add(this.zone12);
-            this.Controls.Add(this.floor2);
-            this.Controls.Add(this.floor0);
             this.Controls.Add(this.zone00);
             this.Controls.Add(this.zone01);
             this.Controls.Add(this.zone10);
+            this.Controls.Add(this.userControl);
+            this.Controls.Add(this.floor2);
+            this.Controls.Add(this.floor0);
             this.Controls.Add(this.floor1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MapView";
             this.Size = new System.Drawing.Size(768, 486);
             ((System.ComponentModel.ISupportInitialize)(this.floor1)).EndInit();
