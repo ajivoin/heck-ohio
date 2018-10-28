@@ -12,9 +12,12 @@ namespace Business_IoT_Thermostat {
     public partial class ZoneView : UserControl {
 
         public Form2 parent;
+        public int setTemp = 72;
 
         public ZoneView() {
             InitializeComponent();
+            tempText.Text = "72.3\u00B0";
+            tempSet.Text = setTemp.ToString() + "\u00B0";
 
         }
 
@@ -39,6 +42,20 @@ namespace Business_IoT_Thermostat {
         }
 
         private void label1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnLowerSet_Click(object sender, EventArgs e) {
+            setTemp--;
+            tempSet.Text = setTemp.ToString() + "\u00B0";
+        }
+
+        private void btnRaiseSet_Click(object sender, EventArgs e) {
+            setTemp++;
+            tempSet.Text = setTemp.ToString() + "\u00B0";
+        }
+
+        private void tempSet_Click(object sender, EventArgs e) {
 
         }
     }

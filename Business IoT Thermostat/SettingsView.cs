@@ -22,6 +22,8 @@ namespace Business_IoT_Thermostat {
         SerialPort port;
         String portInput;
 
+        char currentMode;
+
         float previousDist;
         float currentDist;
 
@@ -107,9 +109,13 @@ namespace Business_IoT_Thermostat {
 
         private void timer1_Tick(object sender, EventArgs e) {
             if (Math.Abs(currentDist - previousDist) > 2f) {
-                // Send data back
+                setTrigger();
             }
             previousDist = currentDist;
+        }
+
+        public void setTrigger() {
+            currentMode = '1';
         }
     }
 }
