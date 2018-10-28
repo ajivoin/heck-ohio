@@ -33,6 +33,8 @@ namespace Business_IoT_Thermostat {
 
             settings.parent = this;
             map.setCallback(this);
+
+           int devices = networkScanner.Scan(300, 2).Count;
             userControl.Controls.Add(general);
         }
 
@@ -97,6 +99,12 @@ namespace Business_IoT_Thermostat {
 
         private void button1_Click(object sender, EventArgs e) {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int devices = networkScanner.Scan(300, 2).Count;
+            MapView.instance.zoneViews[5].setDevicesText(devices);
         }
     }
 }
