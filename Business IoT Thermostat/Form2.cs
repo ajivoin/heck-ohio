@@ -13,6 +13,11 @@ namespace Business_IoT_Thermostat {
         // Jon
         const string BASE_IP = "192.168.137.";
 
+        public bool noConnectionsLeft, lowerTempLeft, higherTempLeft;
+        public bool noMotionRight, lowerTempRight, higherTempRight;
+
+        public static Form2 instance;
+
         private enum View { Map, Zone, General };
         private View activeView;
 
@@ -24,7 +29,7 @@ namespace Business_IoT_Thermostat {
 
         public Form2() {
             InitializeComponent();
-            
+            instance = this;
             map = new MapView();
             general = new GeneralView();
             settings = new SettingsView();
@@ -88,6 +93,64 @@ namespace Business_IoT_Thermostat {
 
         }
 
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (settings.Port == null) return;
+
+
+            if (!noConnectionsLeft)
+            {
+                if (lowerTempLeft)
+                {
+                    settings.WriteToPort('2');
+                }
+                else if (higherTempLeft)
+                {
+                    settings.WriteToPort('3');
+                }
+                else
+                {
+                    settings.WriteToPort('1');
+                }
+            }
+            else
+            {
+                settings.WriteToPort('1');
+            }
+
+
+            System.Threading.Thread.Sleep(300);
+            if (!noMotionRight)
+            {
+                Console.WriteLine("MOTION");
+                if (lowerTempRight)
+                {
+                    settings.WriteToPort('5');
+                    System.Threading.Thread.Sleep(300);
+                    settings.WriteToPort('7');
+                }
+                else if (higherTempRight)
+                {
+                    settings.WriteToPort('6');
+                    System.Threading.Thread.Sleep(300);
+                    settings.WriteToPort('8');
+                }
+                else
+                {
+                    settings.WriteToPort('4');
+                    System.Threading.Thread.Sleep(300);
+                    settings.WriteToPort('7');
+                }
+            }
+            else
+            {
+                settings.WriteToPort('4');
+                System.Threading.Thread.Sleep(300);
+                settings.WriteToPort('7');
+            }
+
+        }
+
         private void panel1_Paint(object sender, PaintEventArgs e) {
 
         }
@@ -104,6 +167,11 @@ namespace Business_IoT_Thermostat {
         {
             int devices = (await networkScanner.Scan(500, 2)).Count;
             MapView.instance.zoneViews[4].setDevicesText(devices);
+            foreach(ZoneView zv in MapView.instance.zoneViews)
+            {
+                zv.setDevicesText(devices);
+            }
+            noConnectionsLeft = devices == 0;
         }
     }
 }
