@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Business_IoT_Thermostat {
     public partial class Form2 : Form {
+        // Jon
+        const string BASE_IP = "192.168.137.";
 
         private enum View { Map, Zone, General };
         private View activeView;
@@ -18,6 +20,8 @@ namespace Business_IoT_Thermostat {
         private GeneralView general;
         private SettingsView settings;
 
+        private NetworkScanner networkScanner;
+
         public Form2() {
             InitializeComponent();
             
@@ -25,10 +29,11 @@ namespace Business_IoT_Thermostat {
             general = new GeneralView();
             settings = new SettingsView();
 
+            networkScanner = new NetworkScanner(BASE_IP, 3, 4);
+
             settings.parent = this;
             map.setCallback(this);
             userControl.Controls.Add(general);
-
         }
 
         //private void ChangeActiveView() {

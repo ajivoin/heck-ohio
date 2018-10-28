@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -50,10 +51,10 @@ namespace Business_IoT_Thermostat
             //}
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
-            NetworkScanner netScan = new NetworkScanner(BASE_IP, 2, 3, 4);
-            Dictionary<string, long> addresses = netScan.Scan(PING_TIME, TRIES_PER_IP);
+            NetworkScanner netScan = new NetworkScanner(BASE_IP, new int[] { 115, 50 });
+            Dictionary<string, long> addresses = await netScan.Scan(PING_TIME, TRIES_PER_IP);
             foreach (KeyValuePair<string, long> p in addresses)
             {
                 textBox1.Text += string.Format("{0}:{1}", p.Key, p.Value);

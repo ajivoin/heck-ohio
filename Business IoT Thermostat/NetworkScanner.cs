@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Threading.Tasks;
 
 namespace Business_IoT_Thermostat
 {
@@ -34,7 +35,7 @@ namespace Business_IoT_Thermostat
         /// </summary>
         /// <param name="baseIP">Base string of IP address to build upon. Example: "255.255.255."</param>
         /// <param name="parts">Values for the 4th segment of IP address. Each value x must fit: 0 <= x <= 255</param>
-        public NetworkScanner(string baseIP, params int[] parts)
+        public NetworkScanner(string baseIP, int[] parts)
         {
             ipList = parts.Distinct().Select(i => baseIP + i.ToString()).ToList();
         }
@@ -62,7 +63,7 @@ namespace Business_IoT_Thermostat
         /// <param name="ip">IP to be pinged</param>
         /// <param name="timeout">Ping timeout</param>
         /// <returns>List of successful ping replies</returns>
-        public List<PingReply> PingN(int n, Ping pingSender, string ip, int timeout)
+        public async Task<List<PingReply>> PingN(int n, Ping pingSender, string ip, int timeout)
         {
             List<PingReply> replies = new List<PingReply>();
             PingReply pingReply;
@@ -70,7 +71,7 @@ namespace Business_IoT_Thermostat
             {
                 try
                 {
-                    pingReply = pingSender.Send(ip, timeout);
+                    pingReply = await pingSender.SendPingAsync(ip, timeout);
                 }
                 catch (Exception)
                 {
@@ -92,7 +93,7 @@ namespace Business_IoT_Thermostat
         /// <param name="timeout">Ping timeout</param>
         /// <param name="attemptsPerIP">Max pings per IP address</param>
         /// <returns>Dictionary of IP addresses and their response times</returns>
-        public Dictionary<string, long> Scan(int timeout, int attemptsPerIP)
+        public async Task<Dictionary<string, long>> Scan(int timeout, int attemptsPerIP)
         {
             Dictionary<string, long> foundIPs = new Dictionary<string, long>();
 
@@ -106,7 +107,7 @@ namespace Business_IoT_Thermostat
             {
                 Console.WriteLine(ip);
                 scanCount++;
-                List<PingReply> replies = PingN(attemptsPerIP, pingSender, ip, timeout);
+                List<PingReply> replies = await PingN(attemptsPerIP, pingSender, ip, timeout);
                 if (replies.Count() > 0)
                 { 
                     foundIPs.Add(ip, replies.Sum(r => r.RoundtripTime));

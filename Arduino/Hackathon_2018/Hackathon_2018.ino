@@ -54,6 +54,7 @@ void setup() {
 
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
+  
 }
 
 void loop() {
