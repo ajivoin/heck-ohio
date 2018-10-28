@@ -57,24 +57,24 @@ void setup() {
 }
 
 void loop() {
-  for (uint16_t i = 8; i < strip.numPixels(); i++) {
-  strip.setPixelColor(i, strip.Color(0,0,200));
-  strip.show();
-  }
-  for (uint16_t i = 0; i < 6; i++) {
-  strip.setPixelColor(i, strip.Color(200,0,0));
-  strip.show();
-  }
-  delay(2000);
-   for (uint16_t i = 8; i < strip.numPixels(); i++) {
-  strip.setPixelColor(i, strip.Color(200,0,0));
-  strip.show();
-  }
-  for (uint16_t i = 0; i < 6; i++) {
-  strip.setPixelColor(i, strip.Color(0,0,200));
-  strip.show();
-  }
-  delay(2000);
+//  for (uint16_t i = 8; i < strip.numPixels(); i++) {
+//  strip.setPixelColor(i, strip.Color(0,0,200));
+//  strip.show();
+//  }
+//  for (uint16_t i = 0; i < 6; i++) {
+//  strip.setPixelColor(i, strip.Color(200,0,0));
+//  strip.show();
+//  }
+//  delay(2000);
+//   for (uint16_t i = 8; i < strip.numPixels(); i++) {
+//  strip.setPixelColor(i, strip.Color(200,0,0));
+//  strip.show();
+//  }
+//  for (uint16_t i = 0; i < 6; i++) {
+//  strip.setPixelColor(i, strip.Color(0,0,200));
+//  strip.show();
+//  }
+//  delay(2000);
   // analogValue = analogRead (analog_sensor);
   // Serial.println (analogValue-80, DEC);
   //allOn(strip.Color(0,170,0));
@@ -87,20 +87,20 @@ void loop() {
 }
 void sendOutputValue() {
   int chk = DHT11.read(4);
-//  Serial.print(bme.readTemperature() * 9 / 5 + 32);
-//  Serial.print(",");
-//  Serial.print(Fahrenheit(DHT11.temperature) - 3, 2);
-//  Serial.print(",");
-//  Serial.print(bme.readHumidity());
-//  Serial.print(",");
-//  Serial.print(DHT11.humidity);
-//  Serial.print(",");
-//  Serial.print(bme.readPressure());
-//  Serial.print(",");
-//  Serial.print(ultraDistance());
-//  Serial.print(",");
-//  Serial.print("\n");
-  delay(80);
+  Serial.print(bme.readTemperature() * 9 / 5 + 32);
+  Serial.print(",");
+  Serial.print(Fahrenheit(DHT11.temperature) - 3, 2);
+  Serial.print(",");
+  Serial.print(bme.readHumidity());
+  Serial.print(",");
+  Serial.print(DHT11.humidity);
+  Serial.print(",");
+  Serial.print(bme.readPressure());
+  Serial.print(",");
+  Serial.print(ultraDistance());
+  Serial.print(",");
+  Serial.print("\n");
+  delay(100);
 }
 int ultraDistance() {
   digitalWrite(outputPin, LOW);
