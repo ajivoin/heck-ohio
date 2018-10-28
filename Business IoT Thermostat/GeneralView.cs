@@ -13,5 +13,10 @@ namespace Business_IoT_Thermostat {
         public GeneralView() {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -99,7 +99,7 @@ namespace Business_IoT_Thermostat {
             this.generalBtn.Name = "generalBtn";
             this.generalBtn.Size = new System.Drawing.Size(114, 38);
             this.generalBtn.TabIndex = 0;
-            this.generalBtn.Text = "General";
+            this.generalBtn.Text = "Dashboard";
             this.generalBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.generalBtn.UseVisualStyleBackColor = false;
             this.generalBtn.Click += new System.EventHandler(this.generalBtn_Click);

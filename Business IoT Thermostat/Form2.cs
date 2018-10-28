@@ -15,7 +15,7 @@ namespace Business_IoT_Thermostat {
 
         public bool noConnectionsLeft, lowerTempLeft, higherTempLeft;
         public bool noMotionRight, lowerTempRight, higherTempRight;
-
+        public int numDevices;
         public static Form2 instance;
 
         private enum View { Map, Zone, General };
@@ -126,26 +126,26 @@ namespace Business_IoT_Thermostat {
                 if (lowerTempRight)
                 {
                     settings.WriteToPort('5');
-                    System.Threading.Thread.Sleep(300);
+                    //System.Threading.Thread.Sleep(300);
                     settings.WriteToPort('7');
                 }
                 else if (higherTempRight)
                 {
                     settings.WriteToPort('6');
-                    System.Threading.Thread.Sleep(300);
+                    //System.Threading.Thread.Sleep(300);
                     settings.WriteToPort('8');
                 }
                 else
                 {
                     settings.WriteToPort('4');
-                    System.Threading.Thread.Sleep(300);
+                   // System.Threading.Thread.Sleep(300);
                     settings.WriteToPort('7');
                 }
             }
             else
             {
                 settings.WriteToPort('4');
-                System.Threading.Thread.Sleep(300);
+                //System.Threading.Thread.Sleep(300);
                 settings.WriteToPort('7');
             }
 
@@ -172,6 +172,23 @@ namespace Business_IoT_Thermostat {
                 zv.setDevicesText(devices);
             }
             noConnectionsLeft = devices == 0;
+            numDevices = devices;
+            if(devices == 0)
+            {
+                settings.WriteToPort('9');
+            }
+            if (devices == 1)
+            {
+                settings.WriteToPort('a');
+            }
+            if (devices == 2)
+            {
+                settings.WriteToPort('b');
+            }
+            if (devices == 3)
+            {
+                settings.WriteToPort('c');
+            }
         }
     }
 }

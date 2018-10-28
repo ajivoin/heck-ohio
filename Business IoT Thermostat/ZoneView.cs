@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Diagnostics;
 namespace Business_IoT_Thermostat {
     public partial class ZoneView : UserControl {
-
+        
         public Form2 parent;
         public int setTemp = 72;
-
+        public Stopwatch stopwatch = new Stopwatch();
+        public int graph_scalar = 32;
         public ZoneView() {
             InitializeComponent();
             tempText.Text = "72.3\u00B0";
@@ -25,8 +27,17 @@ namespace Business_IoT_Thermostat {
             labelText.Text = s;
         }
 
-        public void SetTemp(string s) {
+        public void SetTemp(string s, float num) {
             tempText.Text = s;
+            double time = Math.Round((stopwatch.ElapsedMilliseconds / 1000.0), 1);
+            
+                if (graph.Series[0].Points.Count > graph_scalar) 
+                    graph.Series[0].Points.RemoveAt(0);
+         
+                DataPoint newPoint = new DataPoint(time, num);
+                graph.Series[0].Points.Add(newPoint);
+                graph.ChartAreas[0].RecalculateAxesScale();
+            
         }
 
         public void SetHumid(string s) {
