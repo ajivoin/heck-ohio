@@ -57,24 +57,6 @@ void setup() {
 }
 
 void loop() {
-//  for (uint16_t i = 8; i < strip.numPixels(); i++) {
-//  strip.setPixelColor(i, strip.Color(0,0,200));
-//  strip.show();
-//  }
-//  for (uint16_t i = 0; i < 6; i++) {
-//  strip.setPixelColor(i, strip.Color(200,0,0));
-//  strip.show();
-//  }
-//  delay(2000);
-//   for (uint16_t i = 8; i < strip.numPixels(); i++) {
-//  strip.setPixelColor(i, strip.Color(200,0,0));
-//  strip.show();
-//  }
-//  for (uint16_t i = 0; i < 6; i++) {
-//  strip.setPixelColor(i, strip.Color(0,0,200));
-//  strip.show();
-//  }
-//  delay(2000);
   // analogValue = analogRead (analog_sensor);
   // Serial.println (analogValue-80, DEC);
   //allOn(strip.Color(0,170,0));
@@ -89,7 +71,7 @@ void sendOutputValue() {
   int chk = DHT11.read(4);
   Serial.print(bme.readTemperature() * 9 / 5 + 32);
   Serial.print(",");
-  Serial.print(Fahrenheit(DHT11.temperature) - 3, 2);
+  Serial.print(Fahrenheit(DHT11.temperature) - 2, 2);
   Serial.print(",");
   Serial.print(bme.readHumidity());
   Serial.print(",");
@@ -100,7 +82,7 @@ void sendOutputValue() {
   Serial.print(ultraDistance());
   Serial.print(",");
   Serial.print("\n");
-  delay(100);
+  delay(300);
 }
 int ultraDistance() {
   digitalWrite(outputPin, LOW);
@@ -119,26 +101,63 @@ int ultraDistance() {
     distance = lastValue;
   return distance;
 }
+void fanControl(int toggle) {
+  if (toggle == 1) {
+    digitalWrite(relayPin, HIGH);
+  }
+  else {
+    digitalWrite(relayPin, LOW);
+  }
+
+}
 void recieveInputValue() {
   if (Serial.available())
   {
-    int inputValue = Serial.read();
+    char inputValue = Serial.read();
+    Serial.print(inputValue);
+    switch (inputValue) {
+      case '0':
+        fanControl(0);
+        setAllOff();
+        break;
+      case '1':
+        fanControl(1);
+        setLightLeft(0);
+        break;
+      case '2':
+        fanControl(1);
+        setLightLeft(1);
+        break;
+      case '3':
+        fanControl(1);
+        setLightLeft(2);
+        break;
+      case '4':
+        fanControl(1);
+        setLightRight(0);
+        break;
+      case '5':
+        fanControl(1);
+        setLightRight(1);
+        break;
+      case '6':
+        fanControl(1);
+        setLightRight(2);
+        break;
+      default:
+        setAllOff();
+        break;
+    }
+    //0 all off
+    //1 fan on left heat (red)
+    //2 fan on left cool (blue)
+    //3 fan on right heat (red)
+    //4 fan on right cool (blue)
+    //determine heat or cool
+    // heat 0 cool 1
+
   }
-}
-
-double Fahrenheit(double celsius)
-{
-  return 1.8 * celsius + 32;
-}
-
-void setLeft() {
-}
-
-void allOn(uint32_t c) {
-  for (uint16_t i = 0; i < strip.numPixels(); i++) {
-    strip.setPixelColor(i, c);
-    strip.show();
-  }
+  delay(30);
 }
 void allOff() {
   for (uint16_t i = 0; i < strip.numPixels(); i++) {
@@ -146,6 +165,75 @@ void allOff() {
     strip.show();
   }
 }
+void setAllOff() {
+
+  allOff();
+}
+void setLightLeft(int action)
+{
+  for (uint16_t i = 8; i < strip.numPixels(); i++) {
+    strip.setPixelColor(i, strip.Color(0, 0, 0));
+    strip.show();
+  }
+  if (action == 1) {
+    for (uint16_t i = 8; i < strip.numPixels(); i++) {
+      strip.setPixelColor(i, strip.Color(200, 0, 0));
+      strip.show();
+    }
+  }
+  else if (action == 2) {
+    for (uint16_t i = 8; i < strip.numPixels(); i++) {
+      strip.setPixelColor(i, strip.Color(0, 0, 200));
+      strip.show();
+    }
+  }
+  else {
+    for (uint16_t i = 8; i < strip.numPixels(); i++) {
+      strip.setPixelColor(i, strip.Color(0, 0, 0));
+      strip.show();
+    }
+  }
+}
+double Fahrenheit(double celsius)
+{
+  return 1.8 * celsius + 32;
+}
+
+void setLightRight(int action) {
+  for (uint16_t i = 0; i < 6; i++) {
+    strip.setPixelColor(i, strip.Color(0, 0, 0));
+    strip.show();
+  }
+  if (action == 1) {
+    for (uint16_t i = 0; i < 6; i++) {
+      strip.setPixelColor(i, strip.Color(200, 0, 0));
+      strip.show();
+    }
+  }
+  else if (action == 2){
+  for (uint16_t i = 0; i < 6; i++) {
+      strip.setPixelColor(i, strip.Color(0, 0, 200));
+      strip.show();
+    }
+  }
+  else {
+    for (uint16_t i = 0; i < 6; i++) {
+      strip.setPixelColor(i, strip.Color(0, 0, 0));
+      strip.show();
+    }
+  }
+
+
+}
+
+
+void allOn(uint32_t c) {
+  for (uint16_t i = 0; i < strip.numPixels(); i++) {
+    strip.setPixelColor(i, c);
+    strip.show();
+  }
+}
+
 void flash(uint32_t c, uint8_t wait) {
   allOn(c);
   strip.show();
