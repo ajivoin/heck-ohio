@@ -4,7 +4,7 @@ We're having a heck ton of fun here at [HACK OHI/O 2018](http://hack.osu.edu/201
 # The Project  
 Large businesses and universities have WiFi access points everywhere. Can these be utilized to more intelligently turn on air conditioning and heating, leading to vast energy savings?
 
-At HACK OHI/O 2018, we put together an applciation and physical model to showcase our solution.  
+At HACK OHI/O 2018, we put together an application and physical model to showcase our solution.  
 *Documentation is still being compiled.*
 
 # The Team
